@@ -24,10 +24,52 @@ import static org.mockito.Mockito.*;
 public class ValidationUtils {
 
 	/**
+	 * Performs an action on a validation state object in the specified preprocessing chain.
+	 *
+	 * @param <T> the type of state object
+	 * @param preprocessingChain the preprocessing chain
+	 * @param stateClass the class of state object
+	 * @param stateAction the action to perform
+	 */
+	public static <T> void useValidationState(IPreprocessor preprocessingChain, final Class<? extends T> stateClass, final IValidationStateAction<T> stateAction) {
+		when(preprocessingChain.process(anyObject(), any(IPreprocessingConfig.class))).thenAnswer(new Answer<Boolean>() {
+			@Override
+			public Boolean answer(InvocationOnMock invocation) throws Throwable {
+
+				IPreprocessingConfig config = (IPreprocessingConfig) invocation.getArguments()[1];
+				IValidationContext context = config.getValidationContext();
+
+				stateAction.performAction(context.getState(stateClass));
+
+				return true;
+			}
+		});
+	}
+
+	/**
+	 * An action on a validation state object. Can be used to retrieve data from or modify a state
+	 * object.
+	 *
+	 * @param <T> the type of state object
+	 * @see #useValidationState(com.forbesdigital.jee.validation.preprocessing.IPreprocessor, java.lang.Class, com.forbesdigital.junit.validation.ValidationUtils.IValidationStateAction)
+	 */
+	public static interface IValidationStateAction<T> {
+
+		/**
+		 * Performs an action with the specified state object.
+		 *
+		 * @param state the state object
+		 */
+		public void performAction(T state);
+	}
+
+	/**
 	 * Run all the validators of the preprocessing chain.
 	 *
 	 * @param preprocessingChain whose validators will be run.
+	 * @deprecated use a validation state object and {@link #modifyValidationState(com.forbesdigital.jee.validation.preprocessing.IPreprocessor, java.lang.Class)}
 	 */
+	@Deprecated
 	public static void runValidatorsInPreprocessingChain(IPreprocessor preprocessingChain) {
 		when(preprocessingChain.process(anyObject(), any(IPreprocessingConfig.class))).thenAnswer(new Answer<Boolean>() {
 			@Override
