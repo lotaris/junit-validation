@@ -5,7 +5,7 @@
   <groupId>com.forbesdigital.junit</groupId>
   <artifactId>junit-validation</artifactId>
   <name>Junit Validation</name>
-  <version>0.3.0</version>
+  <version>0.3.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
