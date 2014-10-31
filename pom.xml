@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.forbesdigital.junit</groupId>
-  <artifactId>fd-junit-validation</artifactId>
-  <name>FD Junit Validation</name>
-  <version>0.2.0-SNAPSHOT</version>
+  <artifactId>junit-validation</artifactId>
+  <name>Junit Validation</name>
+  <version>0.3.0</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -20,7 +20,7 @@
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>2.5</version>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -29,7 +29,7 @@
 						<encoding>${project.build.sourceEncoding}</encoding>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -40,7 +40,7 @@
 						<target>1.7</target>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
@@ -54,7 +54,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
@@ -71,7 +71,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -80,7 +80,7 @@
 						<skip>true</skip>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
@@ -91,8 +91,8 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>2.0</version>
-				</plugin>				
-				
+				</plugin>
+
 				<plugin>
 					<groupId>com.lotaris.maven.rox.plugins</groupId>
 					<artifactId>rox-junit-maven-plugin</artifactId>
@@ -111,23 +111,23 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -143,9 +143,6 @@
 				<artifactId>rox-junit-maven-plugin</artifactId>
 				<configuration>
 					<fullStackTraces>true</fullStackTraces>
-<!--			<filters>
-						<filter>55b73b7b80bc</filter>
-					</filters> -->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -162,7 +159,7 @@
 
 	<profiles>
 		<profile>
-			<id>lotarisVersion</id>
+			<id>versioning</id>
 
 			<build>
 				<plugins>
@@ -172,58 +169,9 @@
 					</plugin>
 				</plugins>
 			</build>
-		</profile>		
+		</profile>
 	</profiles>
 
-	<distributionManagement>
-		<repository>
-			<id>LotarisReleases</id>
-			<name>Lotaris Release Repository</name>
-			<url>${settings.lotaris.nexus.lotaris.releases.url}</url>
-		</repository>
-		<snapshotRepository>
-			<id>LotarisSnapshots</id>
-			<name>Lotaris Snapshot Repository</name>
-			<url>${settings.lotaris.nexus.lotaris.snapshots.url}</url>
-		</snapshotRepository>
-	</distributionManagement>
-
-	<repositories>
-		<repository>
-			<id>LotarisReleases</id>
-			<name>Lotaris Releases Repository</name>
-			<url>${settings.lotaris.nexus.releases.url}</url>
-			<releases/>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>LotarisSnapshots</id>
-			<name>Lotaris Snapshots Repository</name>
-			<url>${settings.lotaris.nexus.snapshots.url}</url>
-			<releases/>
-			<snapshots>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>LotarisReleases</id>
-			<name>Lotaris Repository</name>
-			<url>${settings.lotaris.nexus.releases.url}</url>
-			<releases/>
-		</pluginRepository>
-		<pluginRepository>
-			<id>LotarisSnapshots</id>
-			<name>Lotaris Repository</name>
-			<url>${settings.lotaris.nexus.snapshots.url}</url>
-			<snapshots/>
-		</pluginRepository>
-	</pluginRepositories>
-	
   <dependencies>
 		<!-- Java EE dep -->
 		<dependency>
@@ -232,18 +180,18 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-										
+
 		<dependency>
 			<groupId>com.lotaris.rox.client</groupId>
 			<artifactId>rox-client-junit</artifactId>
 			<version>2.0.0</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.forbesdigital.jee</groupId>
 			<artifactId>validation</artifactId>
-			<version>0.3.0</version>
+			<version>0.5.0</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -259,13 +207,13 @@
 			<version>1.7.5</version>
 			<scope>test</scope>
 		</dependency>
-		
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
     </dependency>
-		
+
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
@@ -280,6 +228,6 @@
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-mockito</artifactId>
 			<version>1.5.6</version>
-		</dependency>			
+		</dependency>
   </dependencies>
 </project>
