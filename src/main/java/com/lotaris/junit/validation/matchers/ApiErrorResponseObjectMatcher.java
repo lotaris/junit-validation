@@ -1,8 +1,8 @@
-package com.forbesdigital.junit.validation.matchers;
+package com.lotaris.junit.validation.matchers;
 
-import com.forbesdigital.jee.validation.ApiError;
-import com.forbesdigital.jee.validation.ApiErrorResponse;
-import com.forbesdigital.jee.validation.IErrorCode;
+import com.lotaris.jee.validation.ApiError;
+import com.lotaris.jee.validation.ApiErrorResponse;
+import com.lotaris.jee.validation.IErrorCode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;

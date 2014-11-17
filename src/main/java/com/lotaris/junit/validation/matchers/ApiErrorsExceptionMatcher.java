@@ -1,7 +1,7 @@
-package com.forbesdigital.junit.validation.matchers;
+package com.lotaris.junit.validation.matchers;
 
-import com.forbesdigital.jee.validation.ApiErrorsException;
-import com.forbesdigital.jee.validation.IErrorCode;
+import com.lotaris.jee.validation.ApiErrorsException;
+import com.lotaris.jee.validation.IErrorCode;
 import java.util.regex.Pattern;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;

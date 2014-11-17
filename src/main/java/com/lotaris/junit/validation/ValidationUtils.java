@@ -1,12 +1,12 @@
-package com.forbesdigital.junit.validation;
+package com.lotaris.junit.validation;
 
-import com.forbesdigital.jee.validation.IErrorCode;
-import com.forbesdigital.jee.validation.IErrorLocationType;
-import com.forbesdigital.jee.validation.IValidationContext;
-import com.forbesdigital.jee.validation.IValidator;
-import com.forbesdigital.jee.validation.SingleObjectOrList;
-import com.forbesdigital.jee.validation.preprocessing.IPreprocessingConfig;
-import com.forbesdigital.jee.validation.preprocessing.IPreprocessor;
+import com.lotaris.jee.validation.IErrorCode;
+import com.lotaris.jee.validation.IErrorLocationType;
+import com.lotaris.jee.validation.IValidationContext;
+import com.lotaris.jee.validation.IValidator;
+import com.lotaris.jee.validation.SingleObjectOrList;
+import com.lotaris.jee.validation.preprocessing.IPreprocessingConfig;
+import com.lotaris.jee.validation.preprocessing.IPreprocessor;
 import java.util.List;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
@@ -51,7 +51,7 @@ public class ValidationUtils {
 	 * object.
 	 *
 	 * @param <T> the type of state object
-	 * @see #useValidationState(com.forbesdigital.jee.validation.preprocessing.IPreprocessor, java.lang.Class, com.forbesdigital.junit.validation.ValidationUtils.IValidationStateAction)
+	 * @see #useValidationState(com.lotaris.jee.validation.preprocessing.IPreprocessor, java.lang.Class, com.lotaris.junit.validation.ValidationUtils.IValidationStateAction)
 	 */
 	public static interface IValidationStateAction<T> {
 
@@ -67,9 +67,10 @@ public class ValidationUtils {
 	 * Run all the validators of the preprocessing chain.
 	 *
 	 * @param preprocessingChain whose validators will be run.
-	 * @deprecated use a validation state object and {@link #modifyValidationState(com.forbesdigital.jee.validation.preprocessing.IPreprocessor, java.lang.Class)}
+	 * @deprecated use a validation state object and {@link #modifyValidationState(com.lotaris.jee.validation.preprocessing.IPreprocessor, java.lang.Class)}
 	 */
 	@Deprecated
+	@SuppressWarnings("unchecked")
 	public static void runValidatorsInPreprocessingChain(IPreprocessor preprocessingChain) {
 		when(preprocessingChain.process(anyObject(), any(IPreprocessingConfig.class))).thenAnswer(new Answer<Boolean>() {
 			@Override
@@ -169,9 +170,10 @@ public class ValidationUtils {
 	 * @param preprocessingChain the preprocessing chain to check
 	 * @param validators the list of validators class.
 	 * @deprecated use
-	 * {@link #assertValidationInPreprocessingChain(com.forbesdigital.jee.validation.preprocessing.IPreprocessor, boolean, java.lang.Class[], com.forbesdigital.jee.validation.IValidator[])}
+	 * {@link #assertValidationInPreprocessingChain(com.lotaris.jee.validation.preprocessing.IPreprocessor, boolean, java.lang.Class[], com.lotaris.jee.validation.IValidator[])}
 	 */
 	@Deprecated
+	@SuppressWarnings("unchecked")
 	public static void assertValidatorsInPreprocessingChain(IPreprocessor preprocessingChain, final Class<? extends IValidator>... validators) {
 		verify(preprocessingChain, times(1)).process(anyObject(), argThat(new BaseMatcher<IPreprocessingConfig>() {
 			@Override
@@ -285,6 +287,7 @@ public class ValidationUtils {
 	 *
 	 * @param context the validation context
 	 */
+	@SuppressWarnings("unchecked")
 	public static void verifyNoValidatorUsed(IValidationContext context) {
 		verify(context, never()).validateObject(anyObject(), anyString(), any(IValidator.class));
 		verify(context, never()).validateObjectOrList(any(SingleObjectOrList.class), anyString(), any(IValidator.class));

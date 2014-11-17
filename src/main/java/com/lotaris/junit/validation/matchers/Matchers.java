@@ -1,4 +1,4 @@
-package com.forbesdigital.junit.validation.matchers;
+package com.lotaris.junit.validation.matchers;
 
 /**
  * This helper class offers additional, custom Hamcrest matchers for our test

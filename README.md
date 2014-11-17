@@ -4,22 +4,13 @@
 
 ## Usage
 
-1. Clone the repository.
-
-2. Run the following command
-
-```bash
-cd <projectFolder>
-mvn clean install
-```
-
-3. Put the following dependency in your pom.xml
+1. Put the following dependency in your pom.xml
 
 ```xml
 <dependency>
-  <groupId>com.forbesdigital.junit</groupId>
+  <groupId>com.lotaris.junit</groupId>
   <artifactId>junit-validation</artifactId>
-  <version>0.3.0</version>
+  <version>0.3.1</version>
 </dependenc>
 ```
 

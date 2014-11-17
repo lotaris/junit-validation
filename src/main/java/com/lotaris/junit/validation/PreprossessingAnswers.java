@@ -1,7 +1,7 @@
-package com.forbesdigital.junit.validation;
+package com.lotaris.junit.validation;
 
-import com.forbesdigital.jee.validation.IErrorCode;
-import com.forbesdigital.jee.validation.preprocessing.IPreprocessingConfig;
+import com.lotaris.jee.validation.IErrorCode;
+import com.lotaris.jee.validation.preprocessing.IPreprocessingConfig;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
